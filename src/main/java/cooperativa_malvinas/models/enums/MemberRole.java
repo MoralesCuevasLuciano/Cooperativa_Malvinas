@@ -1,6 +1,6 @@
 package cooperativa_malvinas.models.enums;
 
-public enum Role {
+public enum MemberRole {
     ADMINISTRATIVE,
     OPERATOR,
     DRIVER_1,

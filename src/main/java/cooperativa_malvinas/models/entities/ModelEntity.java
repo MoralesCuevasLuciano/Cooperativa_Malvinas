@@ -16,13 +16,13 @@ public class ModelEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Modelo", unique = true, nullable = false)
+    @Column(name = "id_model", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "nombre_modelo", nullable = false)
+    @Column(name = "model_name", nullable = false)
     private String name;
 
     @ManyToOne
-    @JoinColumn(name = "Id_Marca", nullable = false)
+    @JoinColumn(name = "id_brand", nullable = false)
     private BrandEntity brand;
 }

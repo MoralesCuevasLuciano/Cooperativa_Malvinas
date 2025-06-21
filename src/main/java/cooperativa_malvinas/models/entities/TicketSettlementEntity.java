@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "recaudaciones")
+@Table(name = "settlements")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,28 +17,28 @@ import java.time.LocalDate;
 public class TicketSettlementEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Recaudacion", unique = true, nullable = false)
+    @Column(name = "id_settlemet", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "fecha", nullable = false)
+    @Column(name = "date", nullable = false)
     private LocalDate date;
 
-    @Column(name = "monto_total", nullable = false)
+    @Column(name = "total_amount", nullable = false)
     private double totalAmount;
 
-    @Column(name = "diferencia_vauchers", nullable = false)
+    @Column(name = "vouchers_difference", nullable = false)
     private int vouchersDifference;
 
-    @Column(name = "monto_vauchers", nullable = false)
+    @Column(name = "vouchers_amount", nullable = false)
     private double vouchersAmount;
 
-    @Column(name = "cuota_cobrada", nullable = false)
+    @Column(name = "memership_fee_charged", nullable = false)
     private boolean memershipFeeCharged = false;
 
-    @Column(name = "quincena_cerrada", nullable = false)
+    @Column(name = "fortnight_closed", nullable = false)
     private boolean fortnightClosed = false;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "Id_Socio", nullable = false)
+    @JoinColumn(name = "id_member", nullable = false)
     private MemberEntity member;
 }

@@ -7,7 +7,7 @@ import lombok.*;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "tickets_reloj")
+@Table(name = "meter_tickets")
 @Getter
 @Data // Includes getters, setters, toString, equals, and hashCode methods
 @NoArgsConstructor // No-args constructor for JPA
@@ -17,30 +17,30 @@ import java.time.LocalDate;
 public class MeterTicketEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Ticket", unique = true, nullable = false)
+    @Column(name = "id_ticket", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "numero_ticket")
+    @Column(name = "ticket_number")
     private String ticketNumber;
 
-    @PastOrPresent(message = "La fecha no puede ser futura")
-    @Column(name = "fecha_emision")
+    @PastOrPresent(message = "The start date cannot be in the future")
+    @Column(name = "start_date")
     private LocalDate startDate;
 
-    @PastOrPresent(message = "La fecha no puede ser futura")
-    @Column(name = "fecha_corte")
+    @PastOrPresent(message = "The end date cannot be in the future")
+    @Column(name = "cutoff_date")
     private LocalDate cutoffDate;
 
-    @Column(name = "importe", nullable = false)
+    @Column(name = "amount", nullable = false)
     private double amount;
 
-    @Column(name = "km_libres")
+    @Column(name = "free_km")
     private double freeKm;
 
-    @Column(name = "km_ocupado")
+    @Column(name = "ocupied_km")
     private double occupiedKm;
 
-    @Column(name = "viajes")
+    @Column(name = "trips")
     private int trips;
 
     @ManyToOne(fetch = FetchType.LAZY)

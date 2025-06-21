@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "vehiculos")
+@Table(name = "vehicles")
 @Data // Includes getters, setters, toString, equals, and hashCode methods
 @NoArgsConstructor // No-args constructor for JPA
 @AllArgsConstructor // All-args constructor for convenience
@@ -19,29 +19,29 @@ import java.util.List;
 public class VehicleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Vehiculo", unique = true, nullable = false)
+    @Column(name = "id_vehicle", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "patente", nullable = false)
+    @Column(name = "license_plate", nullable = false)
     private String licensePlate;
 
-    @Column(name = "licencia", nullable = false)
+    @Column(name = "license_number", nullable = false)
     private String licenseNumber;
 
-    @Column(name = "anio", nullable = false)
+    @Column(name = "year", nullable = false)
     private int year;
 
-    @Column(name = "numero_motor", nullable = false)
+    @Column(name = "engine_number", nullable = false)
     private String engineNumber;
 
-    @Column(name = "numero_chasis", nullable = false)
+    @Column(name = "chassis_number", nullable = false)
     private String chassisNumber;
 
     @ManyToOne
-    @JoinColumn(name = "Id_Marca", nullable = false)
+    @JoinColumn(name = "id_model", nullable = false)
     private ModelEntity model;
 
-    @Column(name = "fecha_vencimiento_vtv", nullable = false)
+    @Column(name = "vtv_expiration_date", nullable = false)
     private LocalDate vtvExpirationDate;
 
     @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

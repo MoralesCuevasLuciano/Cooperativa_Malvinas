@@ -16,17 +16,17 @@ public class AddressEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Direccion", unique = true, nullable = false)
+    @Column(name = "id_address", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "calle", nullable = false)
+    @Column(name = "street", nullable = false)
     private String street;
     @Column(name = "numeral", nullable = false)
     private String numeral;
-    @Column(name = "ciudad", nullable = false)
+    @Column(name = "city", nullable = false)
     private String city;
-    @Column(name = "piso")
+    @Column(name = "floor")
     private String floor;
-    @Column(name = "departamento")
+    @Column(name = "apartment")
     private String apartment;
 }

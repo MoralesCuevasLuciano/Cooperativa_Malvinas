@@ -16,10 +16,10 @@ public class BrandEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Marca", unique = true, nullable = false)
+    @Column(name = "id_brand", unique = true, nullable = false)
     private Long id;
 
-    @Column(name = "nombre_marca", nullable = false, unique = true)
+    @Column(name = "brand_name", nullable = false, unique = true)
     private String name;
 }
 
