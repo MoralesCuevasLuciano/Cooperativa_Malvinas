@@ -18,7 +18,7 @@ public class CredentialEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_credential", unique = true, nullable = false)
-    private Long id;
+    private Long id;    
 
     @OneToOne
     @JoinColumn(name = "id_member", nullable = false, unique = true)
