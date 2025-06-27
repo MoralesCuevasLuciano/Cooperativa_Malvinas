@@ -30,21 +30,25 @@ public class MemberEntity {
 
     @NotBlank(message = "The name cannot be empty")
     @Pattern(regexp = "^[\\p{L} ]+$", message = "Only letters and spaces are allowed")
-    @Size(min = 2, max = 50, message = "The name must be between 2 and 50 characters")
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Size(min = 2, max = 50, message = "The first name must be between 2 and 50 characters")
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
 
-    @NotBlank(message = "The surname cannot be empty")
+    @Pattern(regexp = "^[\\p{L} ]+$", message = "Only letters and spaces are allowed")
+    @Size(min = 2, max = 50, message = "The second name must be between 2 and 50 characters")
+    @Column(name = "second_name", nullable = false)
+    private String secondName;
+
+    @NotBlank(message = "The father's surname cannot be empty")
     @Pattern(regexp = "^[\\p{L} ]+$", message = "Only letters and spaces are allowed")
     @Size(min = 2, max = 50, message = "The surname must be between 2 and 50 characters")
-    @Column(name = "surname", nullable = false)
-    private String surname;
+    @Column(name = "father_surname", nullable = false)
+    private String fatherSurname;
 
-    @NotBlank(message = "The nickname cannot be empty")
     @Pattern(regexp = "^[\\p{L} ]+$", message = "Only letters and spaces are allowed")
     @Size(min = 2, max = 50, message = "The nickname must be between 2 and 50 characters")
-    @Column(name = "nickname")
-    private String nickname;
+    @Column(name = "mother_surname")
+    private String motherSurname;
 
     @NotBlank(message = "The DNI cannot be empty")
     @Pattern(regexp = "^[1-9]\\d{6,7}$", message = "The DNI must have 7 or 8 digits, without leading zeros")
@@ -61,15 +65,18 @@ public class MemberEntity {
     @Column(name = "phone", nullable = false)
     private String phone;
 
+    @NotBlank(message = "The email cannot be empty")
     @Email
     @Column(name = "email", nullable = false)
     private String email;
 
+    @NotBlank(message = "The birth date cannot be empty")
     @Past(message = "The birth date cannot be in the future")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
 
+    @NotBlank(message = "The join date cannot be empty")
     @PastOrPresent(message = "The join date cannot be in the future")
     @Column(name = "join_date", nullable = false)
     private LocalDate joinDate;
@@ -78,6 +85,7 @@ public class MemberEntity {
     @Column(name = "leave_date")
     private LocalDate leaveDate;
 
+    @NotNull(message = "The role cannot be null")
     @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
     private MemberRole role;
@@ -91,7 +99,5 @@ public class MemberEntity {
 
     @OneToOne(mappedBy = "member", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private CredentialEntity credential;
-
-
 
 }

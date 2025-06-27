@@ -3,9 +3,14 @@ package cooperativa_malvinas.models.dto;
 import cooperativa_malvinas.models.enums.CredentialRole;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.Data;
 
+@Data
+@NoArgsConstructor
 @AllArgsConstructor
-@No
+@Builder
 public class CredentialDTO {
     @NotNull
     private String username;
