@@ -15,6 +15,7 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalControllerException {
 
+    @ExceptionHandler(Exception.class)
     private ProblemDetail createProblemDetail(HttpStatus status, String title, String detail, HttpServletRequest request) {
         ProblemDetail problem = ProblemDetail.forStatusAndDetail(status, detail);
         problem.setTitle(title);
@@ -45,5 +46,11 @@ public class GlobalControllerException {
     public ProblemDetail handlerUserExistsException(UserExistsException ex, HttpServletRequest request) {
         return createProblemDetail(HttpStatus.BAD_REQUEST, "User Already Exists",
                 "A user with the provided DNI already exists", request);
+    }
+
+    @ExceptionHandler(AddressExistsException.class)
+    public ProblemDetail handlerAddressExistsException(AddressExistsException ex, HttpServletRequest request) {
+        return createProblemDetail(HttpStatus.BAD_REQUEST, "Address Already Exists",
+                "An address with the provided details already exists", request);
     }
 }

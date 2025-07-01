@@ -46,12 +46,9 @@ public class MemberController {
         return new ResponseEntity<>(desactivatedMember, HttpStatus.OK);
     }
 
-
-    public ResponseEntity<List<MemberEntity>> getAllActiveMembers() {
-        MemberEntity member = memberService.getMemberById(id);
-        if (member == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(member, HttpStatus.OK);
+    @GetMapping("/active")
+    public ResponseEntity<List<MemberDTO>> getAllActiveMembers() {
+        List<MemberDTO> activeMembers = memberService.getAllActiveMembers();
+        return new ResponseEntity<>(activeMembers, HttpStatus.OK);
     }
 }

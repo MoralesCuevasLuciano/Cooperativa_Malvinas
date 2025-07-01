@@ -4,10 +4,7 @@ import cooperativa_malvinas.models.entities.AddressEntity;
 import cooperativa_malvinas.models.enums.MemberRole;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.boot.autoconfigure.amqp.RabbitConnectionDetails;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -17,6 +14,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 public class MemberDTO {
     @NotBlank(message = "The first name cannot be empty")
     @Pattern(regexp = "^[\\p{L} ]+$", message = "Only letters and spaces are allowed")
@@ -45,7 +44,7 @@ public class MemberDTO {
     @Size(min = 10, max = 15, message = "The phone number must be between 10 and 15 characters long")
     private String phone;
 
-    @NotBlank
+    @NotNull(message = "The address cannot be null")
     private AddressEntity address;
 
     @NotBlank(message = "The DNI cannot be empty")
@@ -56,15 +55,15 @@ public class MemberDTO {
     @Pattern(regexp = "^[1-9]\\d{9,10}$", message = "The CUIT must have 10 or 11 digits, without leading zeros")
     private String cuit;
 
-    @NotBlank(message = "The birth date cannot be empty")
+    @NotNull(message = "The birth date cannot be empty")
     @Past(message = "The birth date cannot be in the future")
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate birthDate;
 
-    @NotBlank(message = "The join date cannot be empty")
+    @NotNull(message = "The join date cannot be empty")
     @PastOrPresent(message = "The join date cannot be in the future")
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate joinDate;
-
 
     @NotNull(message = "The role cannot be null")
     private MemberRole role;

@@ -1,6 +1,7 @@
 package cooperativa_malvinas.models.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,12 +22,16 @@ public class AddressEntity {
 
     @Column(name = "street", nullable = false)
     private String street;
+
     @Column(name = "numeral", nullable = false)
     private String numeral;
+
     @Column(name = "city", nullable = false)
     private String city;
+
     @Column(name = "floor")
     private String floor;
+
     @Column(name = "apartment")
     private String apartment;
 }

@@ -12,6 +12,7 @@ public interface MemberRepository extends JpaRepository<MemberEntity, Long> {
 
     Optional<MemberEntity> findByDniAndLeaveDateIsNull(String dni);
     List<MemberEntity> findAllByLeaveDateIsNull();
+
     // Custom query methods can be defined here if needed
     // For example, to find a member by name:
     // Optional<MemberEntity> findByName(String name);
